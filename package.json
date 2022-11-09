@@ -1,0 +1,13 @@
+{
+  "name": "ignore-dependency-scripts",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": {
+    "name": "Douglas Nassif Roma Junior",
+    "email": "nassifrroma@gmail.com"
+  },
+  "license": "MIT",
+  "bin": {
+    "ignore-dependency-scripts": "index.js"
+  }
+}
