@@ -4,7 +4,7 @@
 [![npm version](https://img.shields.io/npm/v/ignore-dependency-scripts.svg)](https://www.npmjs.com/package/ignore-dependency-scripts)
 [![npm downloads](https://img.shields.io/npm/dt/ignore-dependency-scripts.svg)](#install)
 
-TODO: DESCRIPTION HERE
+Script to prevent dependencies to execute postinstall when installed directly from git.
 
 ## Usage
 
