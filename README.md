@@ -1,10 +1,10 @@
-# Ignore dependency postinstall scripts
+# Ignore dependency post/pre install scripts
 
 [![License MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](https://github.com/douglasjunior/ignore-dependency-scripts/blob/master/LICENSE)
 [![npm version](https://img.shields.io/npm/v/ignore-dependency-scripts.svg)](https://www.npmjs.com/package/ignore-dependency-scripts)
 [![npm downloads](https://img.shields.io/npm/dt/ignore-dependency-scripts.svg)](#install)
 
-Script to prevent dependencies to execute postinstall when installed directly from git.
+Script to prevent dependencies to execute post/pre install scripts when installed directly from git.
 
 ## Why?
 
