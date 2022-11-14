@@ -1,16 +1,16 @@
-# Ignore dependency postinstall scripts
+# Ignore dependency post/pre install scripts
 
 [![License MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](https://github.com/douglasjunior/ignore-dependency-scripts/blob/master/LICENSE)
 [![npm version](https://img.shields.io/npm/v/ignore-dependency-scripts.svg)](https://www.npmjs.com/package/ignore-dependency-scripts)
-[![npm downloads](https://img.shields.io/npm/dt/ignore-dependency-scripts.svg)](#install)
+[![npm downloads](https://img.shields.io/npm/dt/ignore-dependency-scripts.svg)](#usage)
 
-Script to prevent dependencies to execute postinstall when installed directly from git.
+Script to prevent dependencies to execute post/pre install scripts when installed directly from git.
 
 ## Why?
 
-Sometimes when working with private projects, we have the need to reuse some parts of our code in many projects. But, we know that maintain a private `npm registry` is a pain and require a lot of attention.
+Sometimes when working with private projects, we have the need to reuse some parts of our code in many projects. But, we know that maintaining a private `npm registry` is a pain and requires a lot of attention.
 
-So, the easiest way, is to install our private repo as a dependency directly from git. But, this come with some caveats like the inability to use `.npmignore` and the **the lack of an option to "prevents pre/post scripts" when installed as a dependency.**
+So, the easiest way, is to install our private repo as a dependency directly from git. But, this comes with some caveats like the inability to use `.npmignore` and the **lack of an option to "prevent pre/post scripts" when installed as a dependency.**
 
 Some examples of scripts that we might want to prevent from running when installed as a dependency is:
 
