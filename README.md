@@ -33,7 +33,7 @@ Replace this:
   },
 ```
 
-To this:
+With this:
 
 ```json
   // package.json
@@ -53,15 +53,15 @@ But, when you install `my-library` as a dependency (aka `yarn add url/to/my-libr
 
 ## How it works
 
-Considering the [usage](#usage) example.
+Consider the [usage](#usage) example above.
 
-When `npx --yes ignore-dependency-scripts` is executed, it will check if exists a `.git` folder inside the root directory.
+When `npx --yes ignore-dependency-scripts` is executed, it will check if there is a `.git` folder inside the root directory.
 
-If `.git` folder exists, then you are installing the dependencies of `./my-library` directly.
+If the `.git` folder exists, then you are installing the dependencies of `./my-library` directly.
 
-If `.git` folder DOES NOT exists, then you are installing `my-library` as a dependency in another repository.
+If the `.git` folder DOES NOT exist, then you are installing `my-library` as a dependency in another repository.
 
-> I think that in future we can extend this package to use another strategies too. PRs will be welcome.
+> I think that in future we can extend this package to use other strategies too. PRs will be welcome.
 
 ## Contribute
 
