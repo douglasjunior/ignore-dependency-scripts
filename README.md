@@ -19,17 +19,47 @@ Some examples of scripts that we might want to prevent from running when install
 
 ## Usage
 
+Replace this:
+
 ```json
-  "postinstall/preinstall/prepare/etc": "npx ignore-dependency-scripts \"your && scripts && here\""
+  // package.json
+
+  "name": "my-library",
+  "scripts:" { 
+    // "start", "test", "build", etc
+    "postinstall/preinstall/prepare/etc": "your && scripts && here"
+  },
 ```
 
-TODO: complete
+To this:
+
+```json
+  // package.json
+
+  "name": "my-library",
+  "scripts:" { 
+    // "start", "test", "build", etc
+    "postinstall/preinstall/prepare/etc": "npx --yes ignore-dependency-scripts \"your && scripts && here\""
+  },
+```
+
+> Replace `your && scripts && here` by any post/pre install script that you want, like `husky install`, `npx pod-install` or both.
+
+Now, when you run `yarn install` or `npm install` in `./my-library` the `your && scripts && here` will run normally. 
+
+But, when you install `my-library` as a dependency (aka `yarn add url/to/my-library.git`) in another repository, the `your && scripts && here` will be ignored.
 
 ## How it works
 
-Check if exists `.git` folders.
+Considering the [usage](#usage) example.
 
-TODO: complete
+When `npx --yes ignore-dependency-scripts` is executed, it will check if exists a `.git` folder inside the root directory.
+
+If `.git` folder exists, then you are installing the dependencies of `./my-library` directly.
+
+If `.git` folder DOES NOT exists, then you are installing `my-library` as a dependency in another repository.
+
+> I think that in future we can extend this package to use another strategies too. PRs will be welcome.
 
 ## Contribute
 
