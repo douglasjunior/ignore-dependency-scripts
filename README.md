@@ -6,7 +6,7 @@
 
 Script to prevent dependencies to execute post/pre install scripts when installed directly from git.
 
-Alternative to [typicode/pinst](https://github.com/typicode/pinst).
+*Alternative to [typicode/pinst](https://github.com/typicode/pinst).*
 
 ## Why?
 
