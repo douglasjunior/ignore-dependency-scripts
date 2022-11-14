@@ -6,6 +6,17 @@
 
 Script to prevent dependencies to execute postinstall when installed directly from git.
 
+## Why?
+
+Sometimes when working with private projects, we have the need to reuse some parts of our code in many projects. But, we know that maintain a private `npm registry` is a pain and require a lot of attention.
+
+So, the easiest way, is to install our private repo as a dependency directly from git. But, this come with some caveats like the inability to use `.npmignore` and the **the lack of an option to "prevents pre/post scripts" when installed as a dependency.**
+
+Some examples of scripts that we might want to prevent from running when installed as a dependency is:
+
+- husky install
+- npx pod-install
+
 ## Usage
 
 ```json
