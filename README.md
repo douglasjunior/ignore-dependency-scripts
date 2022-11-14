@@ -6,6 +6,8 @@
 
 Script to prevent dependencies to execute post/pre install scripts when installed directly from git.
 
+Alternative to [typicode/pinst](https://github.com/typicode/pinst).
+
 ## Why?
 
 Sometimes when working with private projects, we have the need to reuse some parts of our code in many projects. But, we know that maintaining a private `npm registry` is a pain and requires a lot of attention.
