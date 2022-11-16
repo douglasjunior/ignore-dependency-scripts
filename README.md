@@ -19,6 +19,12 @@ Some examples of scripts that we might want to prevent from running when install
 - husky install
 - npx pod-install
 
+It's a solution for:
+
+- https://stackoverflow.com/q/23505318/2826279
+- https://stackoverflow.com/q/44749524/2826279
+- https://stackoverflow.com/q/41015620/2826279
+
 ## Usage
 
 Replace this:
