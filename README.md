@@ -21,6 +21,8 @@ Some examples of scripts that we might want to prevent from running when install
 
 It's a solution for:
 
+- https://stackoverflow.com/q/72092997/2826279
+- https://stackoverflow.com/q/54212147/2826279
 - https://stackoverflow.com/q/23505318/2826279
 - https://stackoverflow.com/q/44749524/2826279
 - https://stackoverflow.com/q/41015620/2826279
@@ -61,7 +63,7 @@ But, when you install `my-library` as a dependency (aka `yarn add url/to/my-libr
 
 Consider the [usage](#usage) example above.
 
-When `npx --yes ignore-dependency-scripts` is executed, it will check if there is a `.git` folder inside the root directory.
+When `npx --yes ignore-dependency-scripts` is executed, it will check if there is a `.git` folder inside the root directory. (thanks to https://stackoverflow.com/a/68915638/2826279)
 
 If the `.git` folder exists, then you are installing the dependencies of `./my-library` directly.
 
