@@ -54,6 +54,7 @@ function main() {
   cmdProcess.stderr.pipe(process.stdout);
 
   cmdProcess.on('exit', function (code) {
+    console.log('Process exited with code: ' + code);
     process.exit(code);
   });
 }

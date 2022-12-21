@@ -2,7 +2,7 @@
   "name": "ignore-dependency-scripts",
   "displayName": "Ignore dependency postinstall scripts",
   "description": "Script to prevent dependencies to execute post/pre install scripts when installed directly from git.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "license": "MIT",
   "main": "index.js",
