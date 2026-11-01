@@ -10,7 +10,6 @@
   <a href="LICENSE"><img src="https://img.shields.io/github/license/douglasjunior/ignore-dependency-scripts?style=flat-square&color=FF4F7B" alt="MIT License"></a>
   <a href="https://www.npmjs.com/package/ignore-dependency-scripts"><img src="https://img.shields.io/npm/v/ignore-dependency-scripts?style=flat-square&color=FFB547" alt="npm version"></a>
   <a href="https://www.npmjs.com/package/ignore-dependency-scripts"><img src="https://img.shields.io/npm/dt/ignore-dependency-scripts?style=flat-square" alt="npm downloads"></a>
-  <img src="https://img.shields.io/badge/node-%3E%3D12-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js >= 12">
   <img src="https://img.shields.io/badge/dependencies-0-blue?style=flat-square" alt="Zero dependencies">
   <a href="https://github.com/douglasjunior/ignore-dependency-scripts/pulls"><img src="https://img.shields.io/badge/PRs-welcome-22C55E?style=flat-square" alt="PRs welcome"></a>
 </p>
@@ -49,16 +48,14 @@ Replace your direct lifecycle script in `package.json`:
 - **When developing locally** (`npm install` or `yarn install` inside `./my-library`): the script runs normally.
 - **When installed as a Git dependency** (`yarn add github:user/my-library` or `npm install git+https://...` in another project): the script is safely ignored.
 
-### Optional: Install as a devDependency
+### Why not install it as a devDependency?
 
-If you prefer not to invoke `npx` dynamically, you can add it as a development dependency:
+Use `npx --yes ignore-dependency-scripts "..."` as shown above for a zero-install setup. A package installed from a Git URL does not install its `devDependencies`, so declaring this tool as a `devDependency` in your library will make the binary unavailable when consumers install that library. If you reference the binary directly in a lifecycle script, declare `ignore-dependency-scripts` under `dependencies` instead:
 
 ```bash
-npm install --save-dev ignore-dependency-scripts
+npm install --save ignore-dependency-scripts
 # or
-yarn add -D ignore-dependency-scripts
-# or
-pnpm add -D ignore-dependency-scripts
+yarn add ignore-dependency-scripts
 ```
 
 Then reference the binary directly:
@@ -76,8 +73,8 @@ Then reference the binary directly:
 - 🛡️ **Git-based dependencies without side effects.** When reusing private or internal packages directly from Git repositories, package managers execute lifecycle scripts like `postinstall` or `prepare`. This package ensures those scripts run strictly in root development.
 - ⚡ **Zero runtime dependencies.** Written in lightweight pure Node.js using only standard library modules (`fs`, `path`, `child_process`). Adds zero bloat to your dependency tree.
 - 📦 **No private npm registry required.** Share libraries directly via Git URLs (`git+ssh://` or `git+https://`) without managing an expensive or complex private npm registry.
-- 🔧 **Seamless monorepo & submodule workflows.** Keeps root repository development fully functional without polluting consuming applications.
-- 🌐 **Universal package manager support.** Works identically across npm, Yarn (Classic & Berry), pnpm, and Bun on Linux, macOS, and Windows.
+- 🔧 **Seamless Git submodule workflows.** The script checks for `.git` in `process.cwd()`. Lifecycle scripts run from a monorepo subfolder such as `packages/*` will be skipped because that directory does not contain the repository's `.git` path.
+- 🌐 **Documented package manager workflows.** The examples cover npm and Yarn; compatibility with other package managers and platforms has not been verified.
 
 ## 🧠 How It Works
 
@@ -85,12 +82,12 @@ When `ignore-dependency-scripts` executes, it checks whether a `.git` folder exi
 
 | Environment | `.git` Folder | Status | Behavior |
 |---|---|---|---|
-| **Local Development**<br>`./my-library` | **Present** | **Executed** | Spawns the specified command with `child_process.exec()` and forwards standard output and error. |
+| **Local Development**<br>`./my-library` | **Present** | **Executed** | Spawns the specified command with `child_process.exec()`, pipes both child `stdout` and `stderr` to `process.stdout`, then exits with the child's exit code after logging `Process exited with code: N`. |
 | **Installed as Dependency**<br>`./consumer-app/node_modules/my-library` | **Absent** | **Ignored** | Prints `Ignored script: <command>` and exits cleanly (`code: 0`) without executing the command. |
 
 ```text
                                  ┌─────────────────────────┐
-                                 │   Does .git folder exist │
+                                 │   Does .git folder exist│
                                  │      in process.cwd()?  │
                                  └───────────┬─────────────┘
                                              │
@@ -118,7 +115,7 @@ This utility solves the long-standing limitation where package managers do not d
 
 </details>
 
-## 🛠️ Common Use Cases
+## 🔧 Common Use Cases
 
 ### 1. Husky Git Hooks
 
@@ -163,7 +160,7 @@ Chain any shell commands within the quoted argument:
 | **Direct Git Dependencies** | ✅ **Full support** | ❌ Requires npm publish hooks | ⚠️ Requires code integration |
 | **Zero Configuration** | ✅ Wrap command in CLI | ⚠️ Needs prepublish/postpublish hooks | ❌ Needs custom JS wrapper |
 | **Dependencies** | ✅ **0 dependencies** | ❌ External packages | ❌ External package |
-| **Package Manager Compatibility** | ✅ npm, Yarn, pnpm, Bun | ⚠️ npm/yarn publish focused | ⚠️ npm/yarn |
+| **Package Manager Compatibility** | ✅ npm and Yarn documented | ⚠️ npm/yarn publish focused | ⚠️ npm/yarn |
 
 ## 🤝 Contributing
 
@@ -175,6 +172,10 @@ Contributions, bug fixes, and feature suggestions are welcome!
 4. Push to your branch and open a Pull Request.
 
 For bugs and feature requests, please [open an issue](https://github.com/douglasjunior/ignore-dependency-scripts/issues).
+
+## 💖 Support
+
+If this project is useful to you, you can support its development on [Patreon](https://www.patreon.com/douglasjunior), via [PayPal](https://paypal.me/douglasnassif), or through [GitHub Sponsors](https://github.com/sponsors/douglasjunior).
 
 ## ⭐ Star History
 

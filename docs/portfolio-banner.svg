@@ -84,7 +84,7 @@
 
   <!-- Frame Border & Bottom Gradient Line -->
   <rect x="1" y="1" width="1278" height="198" rx="15" fill="none" stroke="rgba(150, 160, 255, 0.16)" stroke-width="1.5" />
-  <rect x="0" y="196" width="1280" height="4" fill="url(#p-border-bottom)" rx="2" />
+  <rect x="16" y="196" width="1248" height="4" fill="url(#p-border-bottom)" rx="2" />
 
   <!-- Twinkling Cosmic Stars (twinkle opacity only) -->
   <g class="p-twinkle-1">
@@ -118,7 +118,7 @@
     <!-- Animated Orbit Satellite (Static wrapper around animated group with centered bounding box) -->
     <g class="orbit-item">
       <!-- Invisible bounding circle ensuring transform-origin center is exactly (0,0) -->
-      <circle cx="0" cy="0" r="46" fill="none" opacity="0" />
+      <circle cx="0" cy="0" r="50.5" fill="none" opacity="0" />
       <!-- Satellite Gold Sphere -->
       <circle cx="46" cy="0" r="4.5" fill="#ffd56a" />
       <circle cx="46" cy="0" r="2" fill="#ffffff" />
@@ -128,7 +128,7 @@
   <!-- Left & Center Profile Content -->
   <g transform="translate(160, 0)">
     <!-- Category Pill -->
-    <rect x="0" y="38" width="260" height="24" rx="12" fill="rgba(139, 123, 255, 0.12)" stroke="rgba(139, 123, 255, 0.3)" stroke-width="1" />
+    <rect x="0" y="38" width="290" height="24" rx="12" fill="rgba(139, 123, 255, 0.12)" stroke="rgba(139, 123, 255, 0.3)" stroke-width="1" />
     <circle cx="14" cy="50" r="3.5" fill="#8b7bff" />
     <text x="26" y="54" class="font-sans" font-size="10" font-weight="700" fill="#8b7bff" letter-spacing="1">OPEN SOURCE CREATOR &amp; ENGINEER</text>
 
