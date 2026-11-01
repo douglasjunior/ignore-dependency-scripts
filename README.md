@@ -196,8 +196,16 @@ If `ignore-dependency-scripts` solved your Git dependency lifecycle issues, cons
 
 [MIT](LICENSE) © [Douglas Nassif Roma Junior](https://github.com/douglasjunior)
 
+---
+
+## 🌐 Author & More Projects
+
 <p align="center">
   <a href="https://douglasjunior.work">
     <img src="docs/portfolio-banner.svg" alt="Discover more open source projects by Douglas Junior" width="800" />
   </a>
+</p>
+
+<p align="center">
+  Discover more open-source libraries, creative animation engines, and developer tools at <a href="https://douglasjunior.work"><b>douglasjunior.work</b></a>.
 </p>
