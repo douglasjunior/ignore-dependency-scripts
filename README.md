@@ -198,6 +198,6 @@ If `ignore-dependency-scripts` solved your Git dependency lifecycle issues, cons
 
 <p align="center">
   <a href="https://douglasjunior.work">
-    <img src="docs/portfolio-banner.svg" alt="Crafted by Douglas Junior — Explore portfolio" width="800">
+    <img src="docs/portfolio-banner.svg" alt="Discover more open source projects by Douglas Junior" width="800" />
   </a>
 </p>

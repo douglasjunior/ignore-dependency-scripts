@@ -172,8 +172,8 @@
       <text x="180" y="20" class="font-sans" font-size="12" font-weight="600" fill="#e9ebfa">⚡ Zero Dependencies</text>
 
       <!-- Pill 3 -->
-      <rect x="358" y="0" width="180" height="30" rx="8" fill="rgba(74, 222, 128, 0.12)" stroke="rgba(74, 222, 128, 0.3)" stroke-width="1" />
-      <text x="374" y="20" class="font-sans" font-size="12" font-weight="600" fill="#e9ebfa">📦 Direct Git Installs</text>
+      <rect x="358" y="0" width="164" height="30" rx="8" fill="rgba(74, 222, 128, 0.12)" stroke="rgba(74, 222, 128, 0.3)" stroke-width="1" />
+      <text x="440" y="20" class="font-sans" font-size="12" font-weight="600" fill="#e9ebfa" text-anchor="middle" textLength="140" lengthAdjust="spacingAndGlyphs">📦 Direct Git Installs</text>
     </g>
 
     <!-- Dual-Mode Architectural Overview -->
