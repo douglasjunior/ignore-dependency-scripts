@@ -1,0 +1,316 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" width="1280" height="640">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="cov-bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#04050d" />
+      <stop offset="55%" stop-color="#070919" />
+      <stop offset="100%" stop-color="#0a0c1d" />
+    </linearGradient>
+
+    <radialGradient id="cov-nebula-violet" cx="15%" cy="12%" r="55%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#8b7bff" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="cov-nebula-cyan" cx="88%" cy="28%" r="48%">
+      <stop offset="0%" stop-color="#3fd0ff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#3fd0ff" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="cov-nebula-emerald" cx="50%" cy="92%" r="42%">
+      <stop offset="0%" stop-color="#4ade80" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#4ade80" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="cov-title-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="45%" stop-color="#e9ebfa" />
+      <stop offset="85%" stop-color="#8b7bff" />
+      <stop offset="100%" stop-color="#3fd0ff" />
+    </linearGradient>
+
+    <linearGradient id="cov-border-bottom" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b7bff" />
+      <stop offset="35%" stop-color="#3fd0ff" />
+      <stop offset="70%" stop-color="#4ade80" />
+      <stop offset="100%" stop-color="#ffd56a" />
+    </linearGradient>
+
+    <pattern id="cov-cosmic-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(150, 160, 255, 0.038)" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <style>
+    .font-sans { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .font-mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+
+    /* Coherent static visibility: fully visible by default */
+    .twinkle-1 { opacity: 0.9; }
+    .twinkle-2 { opacity: 0.75; }
+    .twinkle-3 { opacity: 0.85; }
+    .twinkle-4 { opacity: 0.65; }
+    .cursor-blink { opacity: 1; }
+    .shield-float { transform-box: fill-box; transform-origin: center; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      /* Twinkle opacity only */
+      .twinkle-1 { animation: twk1 3.4s ease-in-out infinite; }
+      .twinkle-2 { animation: twk2 4.1s ease-in-out infinite 0.8s; }
+      .twinkle-3 { animation: twk3 4.8s ease-in-out infinite 1.6s; }
+      .twinkle-4 { animation: twk4 3.7s ease-in-out infinite 2.4s; }
+
+      .cursor-blink { animation: blk 1.1s steps(2, start) infinite; }
+      .shield-float { animation: flt 4.2s ease-in-out infinite alternate; }
+    }
+
+    @keyframes twk1 {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 0.95; }
+    }
+
+    @keyframes twk2 {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.2; }
+    }
+
+    @keyframes twk3 {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes twk4 {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 0.15; }
+    }
+
+    @keyframes blk {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    @keyframes flt {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-7px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+      }
+    }
+  </style>
+
+  <!-- Stage Background -->
+  <rect width="1280" height="640" rx="20" fill="url(#cov-bg-grad)" />
+  <rect width="1280" height="640" rx="20" fill="url(#cov-nebula-violet)" />
+  <rect width="1280" height="640" rx="20" fill="url(#cov-nebula-cyan)" />
+  <rect width="1280" height="640" rx="20" fill="url(#cov-nebula-emerald)" />
+  <rect width="1280" height="640" rx="20" fill="url(#cov-cosmic-grid)" />
+
+  <!-- Outer Frame -->
+  <rect x="1" y="1" width="1278" height="638" rx="19" fill="none" stroke="rgba(150, 160, 255, 0.16)" stroke-width="1.5" />
+  <rect x="0" y="636" width="1280" height="4" fill="url(#cov-border-bottom)" rx="2" />
+
+  <!-- Twinkling Cosmic Stars (twinkle opacity only) -->
+  <g class="twinkle-1">
+    <circle cx="120" cy="80" r="1.5" fill="#e9ebfa" />
+    <circle cx="340" cy="45" r="2" fill="#ffd56a" />
+    <circle cx="560" cy="110" r="1.5" fill="#8b7bff" />
+    <circle cx="890" cy="40" r="1.8" fill="#3fd0ff" />
+    <circle cx="1180" cy="95" r="2.2" fill="#e9ebfa" />
+    <circle cx="430" cy="415" r="1.5" fill="#ffd56a" />
+  </g>
+  <g class="twinkle-2">
+    <circle cx="75" cy="190" r="2" fill="#3fd0ff" />
+    <circle cx="280" cy="180" r="1.5" fill="#e9ebfa" />
+    <circle cx="620" cy="390" r="2" fill="#ff6a8e" />
+    <circle cx="820" cy="425" r="1.5" fill="#4ade80" />
+    <circle cx="1230" cy="240" r="1.8" fill="#ffd56a" />
+    <circle cx="1040" cy="385" r="1.5" fill="#8b7bff" />
+  </g>
+  <g class="twinkle-3">
+    <circle cx="180" cy="260" r="1.5" fill="#ffd56a" />
+    <circle cx="490" cy="85" r="2.2" fill="#3fd0ff" />
+    <circle cx="750" cy="30" r="1.5" fill="#e9ebfa" />
+    <circle cx="1120" cy="430" r="2" fill="#3fd0ff" />
+    <circle cx="1245" cy="530" r="1.5" fill="#8b7bff" />
+    <circle cx="95" cy="420" r="1.8" fill="#e9ebfa" />
+  </g>
+  <g class="twinkle-4">
+    <circle cx="210" cy="380" r="1.8" fill="#8b7bff" />
+    <circle cx="50" cy="320" r="1.5" fill="#ff6a8e" />
+    <circle cx="680" cy="420" r="1.5" fill="#ffd56a" />
+    <circle cx="990" cy="25" r="2" fill="#e9ebfa" />
+    <circle cx="1205" cy="170" r="1.5" fill="#4ade80" />
+  </g>
+
+  <!-- Left Header Content -->
+  <g>
+    <!-- Category Pill -->
+    <rect x="54" y="52" width="295" height="32" rx="16" fill="rgba(63, 208, 255, 0.1)" stroke="rgba(63, 208, 255, 0.3)" stroke-width="1" />
+    <circle cx="72" cy="68" r="4.5" fill="#3fd0ff" />
+    <text x="86" y="72" class="font-sans" font-size="11" font-weight="700" fill="#3fd0ff" letter-spacing="1">GIT &amp; NPM SECURITY UTILITY</text>
+
+    <!-- Main Title -->
+    <text x="54" y="128" class="font-sans" font-size="34" font-weight="800" fill="url(#cov-title-grad)" letter-spacing="-0.5">ignore-dependency-scripts</text>
+
+    <!-- Subtitle (Two lines) -->
+    <text x="54" y="166" class="font-sans" font-size="15" fill="#9ba1c7">
+      <tspan x="54" dy="0">Prevent pre &amp; postinstall scripts from running</tspan>
+      <tspan x="54" dy="22">when installing packages directly from Git repositories.</tspan>
+    </text>
+
+    <!-- Feature Pills -->
+    <g transform="translate(54, 212)">
+      <!-- Pill 1 -->
+      <rect x="0" y="0" width="154" height="30" rx="8" fill="rgba(139, 123, 255, 0.12)" stroke="rgba(139, 123, 255, 0.3)" stroke-width="1" />
+      <text x="16" y="20" class="font-sans" font-size="12" font-weight="600" fill="#e9ebfa">🛡️ Lifecycle Guard</text>
+
+      <!-- Pill 2 -->
+      <rect x="164" y="0" width="168" height="30" rx="8" fill="rgba(63, 208, 255, 0.12)" stroke="rgba(63, 208, 255, 0.3)" stroke-width="1" />
+      <text x="180" y="20" class="font-sans" font-size="12" font-weight="600" fill="#e9ebfa">⚡ Zero Dependencies</text>
+
+      <!-- Pill 3 -->
+      <rect x="342" y="0" width="164" height="30" rx="8" fill="rgba(74, 222, 128, 0.12)" stroke="rgba(74, 222, 128, 0.3)" stroke-width="1" />
+      <text x="358" y="20" class="font-sans" font-size="12" font-weight="600" fill="#e9ebfa">📦 Direct Git Installs</text>
+    </g>
+
+    <!-- Dual-Mode Architectural Overview -->
+    <g transform="translate(54, 262)">
+      <!-- Box 1: Local Dev Mode -->
+      <rect x="0" y="0" width="245" height="128" rx="10" fill="rgba(13, 15, 36, 0.65)" stroke="rgba(74, 222, 128, 0.3)" stroke-width="1.2" />
+      <rect x="14" y="14" width="7" height="7" rx="3.5" fill="#4ade80" />
+      <text x="28" y="22" class="font-sans" font-size="11" font-weight="700" fill="#4ade80" letter-spacing="0.5">LOCAL DEV (.git present)</text>
+      <text x="14" y="52" class="font-mono" font-size="11" fill="#9ba1c7">$ npm / yarn install</text>
+      <text x="14" y="74" class="font-mono" font-size="11" fill="#ffd56a">&gt; postinstall executes</text>
+      <path d="M 14 90 L 231 90" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+      <text x="14" y="110" class="font-sans" font-size="11.5" font-weight="600" fill="#4ade80">✓ husky / pods run normally</text>
+
+      <!-- Box 2: Dependency Mode -->
+      <rect x="261" y="0" width="245" height="128" rx="10" fill="rgba(13, 15, 36, 0.65)" stroke="rgba(255, 107, 127, 0.3)" stroke-width="1.2" />
+      <rect x="275" y="14" width="7" height="7" rx="3.5" fill="#ff6b7f" />
+      <text x="289" y="22" class="font-sans" font-size="11" font-weight="700" fill="#ff6b7f" letter-spacing="0.5">GIT DEP (.git absent)</text>
+      <text x="275" y="52" class="font-mono" font-size="11" fill="#9ba1c7">$ yarn add git+https://...</text>
+      <text x="275" y="74" class="font-mono" font-size="11" fill="#ff6a8e">⊘ postinstall bypassed</text>
+      <path d="M 275 90 L 492 90" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+      <text x="275" y="110" class="font-sans" font-size="11.5" font-weight="600" fill="#3fd0ff">✓ zero untrusted execution</text>
+    </g>
+  </g>
+
+  <!-- Right Terminal Showcase -->
+  <g transform="translate(580, 52)">
+    <!-- Terminal Window -->
+    <rect x="0" y="0" width="646" height="338" rx="14" fill="#06120f" stroke="rgba(74, 222, 128, 0.25)" stroke-width="1.5" />
+    <path d="M 0 38 L 646 38" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+
+    <!-- macOS / Linux Window Controls -->
+    <circle cx="24" cy="19" r="5" fill="#ff6b7f" />
+    <circle cx="42" cy="19" r="5" fill="#fbbf24" />
+    <circle cx="60" cy="19" r="5" fill="#58e08a" />
+    <text x="323" y="23" class="font-sans" font-size="11" fill="#9ba1c7" text-anchor="middle">terminal — git dependency install</text>
+
+    <!-- Terminal Code Output (at least 20px padding left) -->
+    <text x="24" y="68" class="font-mono" font-size="12">
+      <tspan fill="#3fd0ff">$ </tspan>
+      <tspan fill="#e9ebfa">yarn add git+https://github.com/acme/private-lib.git</tspan>
+    </text>
+    <text x="24" y="98" class="font-mono" font-size="12">
+      <tspan fill="#9ba1c7">&gt; acme-lib@1.0.1 postinstall</tspan>
+    </text>
+    <text x="24" y="128" class="font-mono" font-size="12">
+      <tspan fill="#ffd56a">&gt; npx --yes ignore-dependency-scripts "husky install"</tspan>
+    </text>
+    <text x="24" y="160" class="font-mono" font-size="12">
+      <tspan fill="#8b7bff">[notice] Running in rootPath: /app/node_modules/acme-lib</tspan>
+    </text>
+    <text x="24" y="192" class="font-mono" font-size="12">
+      <tspan fill="#ff6b7f">⊘ Ignored script: </tspan>
+      <tspan fill="#e9ebfa">husky install</tspan>
+      <tspan fill="#9ba1c7"> (.git not found)</tspan>
+    </text>
+    <text x="24" y="228" class="font-mono" font-size="12">
+      <tspan fill="#4ade80">✓ 1 package installed in 0.38s (0 scripts run)</tspan>
+    </text>
+    <text x="24" y="264" class="font-mono" font-size="12">
+      <tspan fill="#3fd0ff">$ </tspan>
+    </text>
+    <rect class="cursor-blink" x="40" y="252" width="7.5" height="15" fill="#3fd0ff" />
+  </g>
+
+  <!-- Floating Guardian Shield: static wrapper around animated group -->
+  <g transform="translate(1160, 142)">
+    <g class="shield-float">
+      <!-- Shield Body -->
+      <path d="M0 -36 L28 -24 V6 C28 23 14 34 0 41 C-14 34 -28 23 -28 6 V-24 Z" fill="rgba(74, 222, 128, 0.14)" stroke="#4ade80" stroke-width="2.5" stroke-linejoin="round" />
+      <!-- Glowing Checkmark -->
+      <path d="M-11 2 L-3 11 L13 -8" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+  </g>
+
+  <!-- Bottom Showcase Cards (3 columns, card descriptions in two lines) -->
+  <g transform="translate(54, 422)">
+    <!-- Card 1 -->
+    <g>
+      <rect x="0" y="0" width="372" height="184" rx="14" fill="rgba(13, 15, 36, 0.72)" stroke="rgba(139, 123, 255, 0.25)" stroke-width="1.2" />
+      <circle cx="34" cy="34" r="16" fill="rgba(139, 123, 255, 0.15)" stroke="#8b7bff" stroke-width="1.2" />
+      <text x="34" y="39" class="font-sans" font-size="14" text-anchor="middle" fill="#8b7bff">🛡️</text>
+      <text x="62" y="39" class="font-sans" font-size="16" font-weight="700" fill="#8b7bff">Git Dependency Guard</text>
+
+      <!-- Pill -->
+      <rect x="246" y="22" width="112" height="22" rx="11" fill="rgba(139, 123, 255, 0.12)" stroke="rgba(139, 123, 255, 0.3)" stroke-width="1" />
+      <text x="302" y="36" class="font-sans" font-size="9.5" font-weight="600" fill="#8b7bff" text-anchor="middle">Git Repositories</text>
+
+      <!-- Description in two lines (with generous padding) -->
+      <text x="20" y="76" class="font-sans" font-size="13" fill="#e9ebfa">
+        <tspan x="20" dy="0">Skips pre and postinstall scripts when installed via Git URL,</tspan>
+        <tspan x="20" dy="22">avoiding build crashes and unauthorized command execution.</tspan>
+      </text>
+
+      <path d="M 20 134 L 352 134" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+      <text x="20" y="158" class="font-sans" font-size="11.5" fill="#838ab2">GitHub · GitLab · Bitbucket · Private Git</text>
+    </g>
+
+    <!-- Card 2 -->
+    <g transform="translate(400, 0)">
+      <rect x="0" y="0" width="372" height="184" rx="14" fill="rgba(13, 15, 36, 0.72)" stroke="rgba(63, 208, 255, 0.25)" stroke-width="1.2" />
+      <circle cx="34" cy="34" r="16" fill="rgba(63, 208, 255, 0.15)" stroke="#3fd0ff" stroke-width="1.2" />
+      <text x="34" y="39" class="font-sans" font-size="14" text-anchor="middle" fill="#3fd0ff">⚡</text>
+      <text x="62" y="39" class="font-sans" font-size="16" font-weight="700" fill="#3fd0ff">Zero External Overhead</text>
+
+      <!-- Pill -->
+      <rect x="246" y="22" width="112" height="22" rx="11" fill="rgba(63, 208, 255, 0.12)" stroke="rgba(63, 208, 255, 0.3)" stroke-width="1" />
+      <text x="302" y="36" class="font-sans" font-size="9.5" font-weight="600" fill="#3fd0ff" text-anchor="middle">0 Dependencies</text>
+
+      <!-- Description in two lines (with generous padding) -->
+      <text x="20" y="76" class="font-sans" font-size="13" fill="#e9ebfa">
+        <tspan x="20" dy="0">Implemented in lightweight pure Node.js with 0 dependencies,</tspan>
+        <tspan x="20" dy="22">executing immediately without extra download latency.</tspan>
+      </text>
+
+      <path d="M 20 134 L 352 134" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+      <text x="20" y="158" class="font-sans" font-size="11.5" fill="#838ab2">Pure Node.js standard library (fs, path, child_process)</text>
+    </g>
+
+    <!-- Card 3 -->
+    <g transform="translate(800, 0)">
+      <rect x="0" y="0" width="372" height="184" rx="14" fill="rgba(13, 15, 36, 0.72)" stroke="rgba(74, 222, 128, 0.25)" stroke-width="1.2" />
+      <circle cx="34" cy="34" r="16" fill="rgba(74, 222, 128, 0.15)" stroke="#4ade80" stroke-width="1.2" />
+      <text x="34" y="39" class="font-sans" font-size="14" text-anchor="middle" fill="#4ade80">🔄</text>
+      <text x="62" y="39" class="font-sans" font-size="16" font-weight="700" fill="#4ade80">Universal Package Support</text>
+
+      <!-- Pill -->
+      <rect x="246" y="22" width="112" height="22" rx="11" fill="rgba(74, 222, 128, 0.12)" stroke="rgba(74, 222, 128, 0.3)" stroke-width="1" />
+      <text x="302" y="36" class="font-sans" font-size="9.5" font-weight="600" fill="#4ade80" text-anchor="middle">npm · yarn · pnpm</text>
+
+      <!-- Description in two lines (with generous padding) -->
+      <text x="20" y="76" class="font-sans" font-size="13" fill="#e9ebfa">
+        <tspan x="20" dy="0">Drop-in replacement for husky install, pod-install or builds,</tspan>
+        <tspan x="20" dy="22">compatible with npm, Yarn, pnpm, and Bun across platforms.</tspan>
+      </text>
+
+      <path d="M 20 134 L 352 134" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1" />
+      <text x="20" y="158" class="font-sans" font-size="11.5" fill="#838ab2">Cross-platform support: Linux · macOS · Windows</text>
+    </g>
+  </g>
+</svg>

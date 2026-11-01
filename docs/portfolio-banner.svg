@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 200" width="1280" height="200">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="p-bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#04050d" />
+      <stop offset="60%" stop-color="#070919" />
+      <stop offset="100%" stop-color="#0a0c1d" />
+    </linearGradient>
+
+    <radialGradient id="p-nebula-violet" cx="12%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#8b7bff" stop-opacity="0.22" />
+      <stop offset="100%" stop-color="#8b7bff" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="p-nebula-cyan" cx="88%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#3fd0ff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#3fd0ff" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="p-border-bottom" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b7bff" />
+      <stop offset="40%" stop-color="#3fd0ff" />
+      <stop offset="80%" stop-color="#ff6a8e" />
+      <stop offset="100%" stop-color="#ffd56a" />
+    </linearGradient>
+
+    <pattern id="p-grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M 36 0 L 0 0 0 36" fill="none" stroke="rgba(150, 160, 255, 0.035)" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <style>
+    .font-sans { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .font-mono { font-family: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+
+    /* Coherent static visibility: resting state fully visible */
+    .p-twinkle-1 { opacity: 0.85; }
+    .p-twinkle-2 { opacity: 0.7; }
+    .p-twinkle-3 { opacity: 0.6; }
+    .orbit-item { transform-box: fill-box; transform-origin: center; }
+
+    @media (prefers-reduced-motion: no-preference) {
+      /* Twinkle opacity only */
+      .p-twinkle-1 { animation: ptwk1 3.6s ease-in-out infinite; }
+      .p-twinkle-2 { animation: ptwk2 4.2s ease-in-out infinite 1.0s; }
+      .p-twinkle-3 { animation: ptwk3 4.8s ease-in-out infinite 2.0s; }
+
+      /* Rotation around origin using static wrapper */
+      .orbit-item { animation: orbitSpin 14s linear infinite; }
+    }
+
+    @keyframes ptwk1 {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 0.95; }
+    }
+
+    @keyframes ptwk2 {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.2; }
+    }
+
+    @keyframes ptwk3 {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes orbitSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+      }
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="1280" height="200" rx="16" fill="url(#p-bg-grad)" />
+  <rect width="1280" height="200" rx="16" fill="url(#p-nebula-violet)" />
+  <rect width="1280" height="200" rx="16" fill="url(#p-nebula-cyan)" />
+  <rect width="1280" height="200" rx="16" fill="url(#p-grid)" />
+
+  <!-- Frame Border & Bottom Gradient Line -->
+  <rect x="1" y="1" width="1278" height="198" rx="15" fill="none" stroke="rgba(150, 160, 255, 0.16)" stroke-width="1.5" />
+  <rect x="0" y="196" width="1280" height="4" fill="url(#p-border-bottom)" rx="2" />
+
+  <!-- Twinkling Cosmic Stars (twinkle opacity only) -->
+  <g class="p-twinkle-1">
+    <circle cx="65" cy="40" r="1.5" fill="#e9ebfa" />
+    <circle cx="480" cy="30" r="1.8" fill="#ffd56a" />
+    <circle cx="880" cy="45" r="1.5" fill="#3fd0ff" />
+    <circle cx="1220" cy="35" r="2" fill="#e9ebfa" />
+  </g>
+  <g class="p-twinkle-2">
+    <circle cx="280" cy="165" r="1.5" fill="#3fd0ff" />
+    <circle cx="640" cy="170" r="2" fill="#8b7bff" />
+    <circle cx="920" cy="160" r="1.5" fill="#ff6a8e" />
+    <circle cx="1240" cy="155" r="1.5" fill="#ffd56a" />
+  </g>
+  <g class="p-twinkle-3">
+    <circle cx="140" cy="160" r="1.8" fill="#ffd56a" />
+    <circle cx="530" cy="165" r="1.5" fill="#e9ebfa" />
+    <circle cx="780" cy="35" r="1.8" fill="#4ade80" />
+    <circle cx="1060" cy="25" r="1.5" fill="#8b7bff" />
+  </g>
+
+  <!-- Left Emblem: Constellation Orbit & Monogram -->
+  <g transform="translate(88, 100)">
+    <!-- Dotted Orbit Track -->
+    <circle cx="0" cy="0" r="46" fill="none" stroke="rgba(139, 123, 255, 0.28)" stroke-width="1.2" stroke-dasharray="3 3" />
+
+    <!-- Center Monogram Badge -->
+    <circle cx="0" cy="0" r="32" fill="rgba(13, 15, 36, 0.85)" stroke="#8b7bff" stroke-width="1.5" />
+    <text x="0" y="6" class="font-sans" font-size="18" font-weight="800" fill="#3fd0ff" text-anchor="middle">DJ</text>
+
+    <!-- Animated Orbit Satellite (Static wrapper around animated group with centered bounding box) -->
+    <g class="orbit-item">
+      <!-- Invisible bounding circle ensuring transform-origin center is exactly (0,0) -->
+      <circle cx="0" cy="0" r="46" fill="none" opacity="0" />
+      <!-- Satellite Gold Sphere -->
+      <circle cx="46" cy="0" r="4.5" fill="#ffd56a" />
+      <circle cx="46" cy="0" r="2" fill="#ffffff" />
+    </g>
+  </g>
+
+  <!-- Left & Center Profile Content -->
+  <g transform="translate(160, 0)">
+    <!-- Category Pill -->
+    <rect x="0" y="38" width="260" height="24" rx="12" fill="rgba(139, 123, 255, 0.12)" stroke="rgba(139, 123, 255, 0.3)" stroke-width="1" />
+    <circle cx="14" cy="50" r="3.5" fill="#8b7bff" />
+    <text x="26" y="54" class="font-sans" font-size="10" font-weight="700" fill="#8b7bff" letter-spacing="1">OPEN SOURCE CREATOR &amp; ENGINEER</text>
+
+    <!-- Creator Name -->
+    <text x="0" y="90" class="font-sans" font-size="22" font-weight="800" fill="#e9ebfa">Douglas Junior</text>
+
+    <!-- Bio Description (Two lines) -->
+    <text x="0" y="118" class="font-sans" font-size="13.5" fill="#9ba1c7">
+      <tspan x="0" dy="0">Creator of freemotion, android-simple-tooltip, and developer-first web tooling.</tspan>
+      <tspan x="0" dy="22">Explore full portfolio, benchmarks, and interactive demo showcases at douglasjunior.work</tspan>
+    </text>
+  </g>
+
+  <!-- Right Call to Action Button -->
+  <g transform="translate(970, 66)">
+    <rect x="0" y="0" width="260" height="68" rx="12" fill="rgba(63, 208, 255, 0.08)" stroke="#3fd0ff" stroke-width="1.5" />
+    <text x="130" y="29" class="font-sans" font-size="16" font-weight="700" fill="#3fd0ff" text-anchor="middle">douglasjunior.work ↗</text>
+    <text x="130" y="50" class="font-sans" font-size="11.5" fill="#9ba1c7" text-anchor="middle">Explore all open source projects</text>
+  </g>
+</svg>
