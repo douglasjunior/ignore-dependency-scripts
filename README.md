@@ -46,11 +46,13 @@ Replace your direct lifecycle script in `package.json`:
 ### How it behaves
 
 - **When developing locally** (`npm install` or `yarn install` inside `./my-library`): the script runs normally.
-- **When installed as a Git dependency** (`yarn add github:user/my-library` or `npm install git+https://...` in another project): the script is safely ignored.
+- **When installed as an npm Git dependency** (`npm install git+https://...` in another project): a wrapped `postinstall` runs after npm packs the checkout, when `.git` is absent, so the command is skipped. `prepare` is an exception: npm runs it in the cloned checkout before packing, while `.git` is still present, so this wrapper executes the command.
 
 ### Why not install it as a devDependency?
 
-Use `npx --yes ignore-dependency-scripts "..."` as shown above for a zero-install setup. A package installed from a Git URL does not install its `devDependencies`, so declaring this tool as a `devDependency` in your library will make the binary unavailable when consumers install that library. If you reference the binary directly in a lifecycle script, declare `ignore-dependency-scripts` under `dependencies` instead:
+Use `npx --yes ignore-dependency-scripts "..."` as shown above when wrapping a lifecycle script that runs after a Git checkout has been packed, such as `postinstall`. This will not skip a Git dependency's `prepare`: npm runs `prepare` in the cloned checkout before packing, with `.git` present, and this wrapper will execute the command.
+
+The packed Git dependency's `devDependencies` are not installed into the consumer's project. However, [npm's lifecycle documentation](https://docs.npmjs.com/cli/v8/using-npm/scripts#life-cycle-scripts) states that when a Git-installed package defines `prepare`, npm installs the checkout's `dependencies` and `devDependencies`, runs `prepare`, and only then packs and installs the package. At this stage the checkout still contains `.git`, so this wrapper executes the command. If you reference the binary directly in a lifecycle script that runs after packing, declare `ignore-dependency-scripts` under `dependencies` instead:
 
 ```bash
 npm install --save ignore-dependency-scripts
@@ -70,7 +72,7 @@ Then reference the binary directly:
 
 ## 💡 Why ignore-dependency-scripts?
 
-- 🛡️ **Git-based dependencies without side effects.** When reusing private or internal packages directly from Git repositories, package managers execute lifecycle scripts like `postinstall` or `prepare`. This package ensures those scripts run strictly in root development.
+- 🛡️ **Skip wrapped scripts after packing.** The wrapper checks for `.git` in `process.cwd()`, so it can skip a wrapped script such as `postinstall` when a Git dependency has been packed and installed. npm's Git-dependency `prepare` is an exception: it runs in the checkout before packing, while `.git` is still present, so the wrapped command executes.
 - ⚡ **Zero runtime dependencies.** Written in lightweight pure Node.js using only standard library modules (`fs`, `path`, `child_process`). Adds zero bloat to your dependency tree.
 - 📦 **No private npm registry required.** Share libraries directly via Git URLs (`git+ssh://` or `git+https://`) without managing an expensive or complex private npm registry.
 - 🔧 **Seamless Git submodule workflows.** The script checks for `.git` in `process.cwd()`. Lifecycle scripts run from a monorepo subfolder such as `packages/*` will be skipped because that directory does not contain the repository's `.git` path.
@@ -83,7 +85,7 @@ When `ignore-dependency-scripts` executes, it checks whether a `.git` folder exi
 | Environment | `.git` Folder | Status | Behavior |
 |---|---|---|---|
 | **Local Development**<br>`./my-library` | **Present** | **Executed** | Spawns the specified command with `child_process.exec()`, pipes both child `stdout` and `stderr` to `process.stdout`, then exits with the child's exit code after logging `Process exited with code: N`. |
-| **Installed as Dependency**<br>`./consumer-app/node_modules/my-library` | **Absent** | **Ignored** | Prints `Ignored script: <command>` and exits cleanly (`code: 0`) without executing the command. |
+| **Packed Dependency Lifecycle**<br>`./consumer-app/node_modules/my-library` | **Absent** | **Ignored** | For lifecycle scripts that run after packing, prints `Ignored script: <command>` and exits cleanly (`code: 0`) without executing the command. npm's Git-dependency `prepare` runs earlier, in the checkout with `.git` present. |
 
 ```text
                                  ┌─────────────────────────┐
@@ -94,11 +96,11 @@ When `ignore-dependency-scripts` executes, it checks whether a `.git` folder exi
                        ┌─────────────────────┴─────────────────────┐
                        ▼                                           ▼
                      Yes                                          No
-         [Local Repository Dev]                         [Installed as Dependency]
+         [Local Repository Dev]                         [Packed Dependency Lifecycle]
                    │                                               │
                    ▼                                               ▼
      Execute specified script                         Log "Ignored script" & exit 0
-  (e.g., husky install, pod-install)                    (consumer project protected)
+  (e.g., husky install, pod-install)                    (e.g., postinstall)
 ```
 
 <details>
@@ -119,15 +121,17 @@ This utility solves the long-standing limitation where package managers do not d
 
 ### 1. Husky Git Hooks
 
-Prevent Husky from attempting to create Git hooks inside consuming projects when your library is installed from Git:
+Run Husky in local development, but skip it when the packed Git dependency is installed by a consumer:
 
 ```json
 {
   "scripts": {
-    "prepare": "npx --yes ignore-dependency-scripts \"husky install\""
+    "postinstall": "npx --yes ignore-dependency-scripts \"husky install\""
   }
 }
 ```
+
+Do not use this wrapper to suppress `prepare` for a Git dependency: npm runs that script in the cloned checkout before packing, while `.git` is present.
 
 ### 2. React Native CocoaPods Installation
 
@@ -157,7 +161,7 @@ Chain any shell commands within the quoted argument:
 
 | Feature / Solution | `ignore-dependency-scripts` | `typicode/pinst` | `bahmutov/am-i-a-dependency` |
 |---|---|---|---|
-| **Direct Git Dependencies** | ✅ **Full support** | ❌ Requires npm publish hooks | ⚠️ Requires code integration |
+| **Direct Git Dependencies** | ✅ **Wrapped scripts after packing** | ❌ Requires npm publish hooks | ⚠️ Requires code integration |
 | **Zero Configuration** | ✅ Wrap command in CLI | ⚠️ Needs prepublish/postpublish hooks | ❌ Needs custom JS wrapper |
 | **Dependencies** | ✅ **0 dependencies** | ❌ External packages | ❌ External package |
 | **Package Manager Compatibility** | ✅ npm and Yarn documented | ⚠️ npm/yarn publish focused | ⚠️ npm/yarn |
